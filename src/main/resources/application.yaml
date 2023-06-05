@@ -1,0 +1,10 @@
+spring:
+ data:
+   datasource:
+    username: postgres
+    password: root123
+    url: jdbc:postgresql://localhost:5432/twitter_clone
+
+ jpa:
+    hibernate:
+      ddl-auto: create

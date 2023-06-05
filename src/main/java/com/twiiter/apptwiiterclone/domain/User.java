@@ -1,18 +1,18 @@
 package com.twiiter.apptwiiterclone.domain;
 
-import jakarta.persistence.CollectionTable;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import lombok.Data;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
+@Data
 public class User {
 
     @Id
     private String userName;
+    private String password;
     private String name;
     private String bio;
     private String job;
