@@ -3,19 +3,17 @@ package com.twiiter.apptwiiterclone.domain;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
-public class Twit {
+public class Twit implements BaseEntity {
 
     @Id
     private UUID id;
 
-    @ManyToOne
-    private User whoPublished;
+    private String userId;
 
     private String body;
 

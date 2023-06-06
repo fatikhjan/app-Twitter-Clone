@@ -2,13 +2,19 @@ package com.twiiter.apptwiiterclone.domain;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import lombok.Data;
-
-import java.time.LocalDate;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
-@Data
-public class User {
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@Table(name = "Users")
+public class User implements BaseEntity {
 
     @Id
     private String userName;
@@ -18,8 +24,8 @@ public class User {
     private String job;
     private String location;
     private String linkedWebSite;
-    private LocalDate dateOfBirth;
-    private LocalDate whenJoined;
+    private String dateOfBirth;
+    private String whenJoined;
     private Integer followed;
     private Integer followers;
 

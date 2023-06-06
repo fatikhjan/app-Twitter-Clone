@@ -1,6 +1,6 @@
 package com.twiiter.apptwiiterclone.controller;
 
-import com.twiiter.apptwiiterclone.payload.UserDTO;
+import com.twiiter.apptwiiterclone.payload.UserCreateDTO;
 import com.twiiter.apptwiiterclone.sevice.AuthService;
 import com.twiiter.apptwiiterclone.sevice.CheckService;
 import jakarta.validation.Valid;
@@ -26,9 +26,9 @@ public class AuthController {
 
 
     @PostMapping("/register")
-    public ResponseEntity<String> register(@RequestBody @Valid UserDTO userDTO) {
+    public ResponseEntity<String> register(@RequestBody @Valid UserCreateDTO userCreateDTO) {
         return ResponseEntity.status(201).body(authService.register(
-                userDTO
+                userCreateDTO
         ));
     }
 
