@@ -1,12 +1,17 @@
 package com.twiiter.apptwiiterclone.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import com.twiiter.apptwiiterclone.domain.enums.Role;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import java.util.Collection;
+import java.util.List;
 
 @Entity
 @AllArgsConstructor
@@ -14,7 +19,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Table(name = "Users")
-public class User implements BaseEntity {
+public class User implements BaseEntity, UserDetails {
 
     @Id
     private String userName;
@@ -28,5 +33,41 @@ public class User implements BaseEntity {
     private String whenJoined;
     private Integer followed;
     private Integer followers;
+    @Enumerated(EnumType.STRING)
+    private Role role;
 
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return List.of(new SimpleGrantedAuthority(role.name()));
+    }
+
+    @Override
+    public String getPassword() {
+        return password;
+    }
+
+    @Override
+    public String getUsername() {
+        return userName;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
 }
