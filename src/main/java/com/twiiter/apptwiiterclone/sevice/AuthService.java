@@ -30,6 +30,7 @@ public class AuthService {
         Optional<User> byUserName = userRepo.findByUserName(userCreateDTO.userName());
         if (byUserName.isPresent()) throw new RuntimeException("UserName already exist");
         User user = userMapper.toEntity(userCreateDTO);
+        user.setPassword(checkService.encodePassword(user.getPassword()));
         userRepo.save(user);
         return "ok";
     }

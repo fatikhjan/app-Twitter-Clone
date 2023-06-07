@@ -11,6 +11,5 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = MappingConstants.ComponentModel.SPRING)
-public interface UserMapper extends GenericMapper<UserCreateDTO, UserResponseDTO, UserUpdateDTO, User> {
-
+public interface UserMapper extends GenericMapper<UserCreateDTO, UserUpdateDTO, UserResponseDTO, User> {
 }

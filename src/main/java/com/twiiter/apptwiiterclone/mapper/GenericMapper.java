@@ -8,7 +8,7 @@ import org.mapstruct.NullValuePropertyMappingStrategy;
 
 import java.util.List;
 
-public interface GenericMapper<CD extends BaseDTO, UD extends BaseDTO, RD extends BaseDTO, E extends BaseEntity> {
+public interface GenericMapper<CD extends BaseDTO, UD extends BaseDTO, RD extends BaseDTO, E extends BaseEntity> extends BaseMapper {
     E toEntity(CD dto);
 
     RD toDTO(E entity);
