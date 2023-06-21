@@ -2,10 +2,7 @@ package com.twiiter.apptwiiterclone.domain;
 
 import com.twiiter.apptwiiterclone.domain.enums.Role;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -34,7 +31,7 @@ public class User implements BaseEntity, UserDetails {
     private Integer followed;
     private Integer followers;
     @Enumerated(EnumType.STRING)
-    private Role role;
+    private Role role= Role.USER;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
