@@ -19,10 +19,6 @@ public class ApplicationConfig {
 
     private final UserRepo userRepo;
 
-    @Bean
-    public UserDetailsService userDetailsService() {
-        return username -> userRepo.findByUserName(username).orElseThrow(() -> new UsernameNotFoundException("User not Found"));
-    }
 
     @Bean
     public AuthenticationProvider authenticationProvider() {
@@ -31,16 +27,18 @@ public class ApplicationConfig {
         daoAuthenticationProvider.setPasswordEncoder(passwordEncoder());
         return daoAuthenticationProvider;
     }
-
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
         return config.getAuthenticationManager();
     }
-
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
 
+    @Bean
+    public UserDetailsService userDetailsService() {
+        return username -> userRepo.findByUserName(username).orElseThrow(() -> new UsernameNotFoundException("User not Found"));
+    }
 }
