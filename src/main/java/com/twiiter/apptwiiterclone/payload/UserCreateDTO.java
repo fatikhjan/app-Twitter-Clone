@@ -8,4 +8,8 @@ public record UserCreateDTO(@NotBlank String userName,
                             @NotBlank String password,
                             @NotBlank String dateOfBirth) implements BaseDTO {
 
+    public UserCreateDTO setPassword(String password1) {
+        return new UserCreateDTO(userName, name, password1, dateOfBirth);
+    }
+
 }

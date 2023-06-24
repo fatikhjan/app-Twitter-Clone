@@ -1,7 +1,6 @@
 package com.twiiter.apptwiiterclone.sevice;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Base64;
@@ -10,7 +9,6 @@ import java.util.Base64;
 @RequiredArgsConstructor
 public class CheckService {
 
-    private final PasswordEncoder encoder;
 
     public boolean checkPassword(String userPassword, String password) {
 
@@ -18,7 +16,6 @@ public class CheckService {
     }
 
     public String encodePassword(String password) {
-
         return Base64.getEncoder().encodeToString(password.getBytes());
     }
 }
